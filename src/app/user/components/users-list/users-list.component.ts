@@ -15,4 +15,6 @@ export class UsersListComponent {
   public userService = inject(UserService);
 
   public users = this.userService.users;
+
+  public totalUsersCount = this.userService.totalUsersCount;
 }
