@@ -1,4 +1,4 @@
-import { Injectable, computed, inject } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user.model';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -18,4 +18,10 @@ export class UserService {
   public users = toSignal(this.users$, { initialValue: [] as User[] });
 
   public totalUsersCount = computed(() => this.users().length);
+
+  public selectedUserId = signal(0);
+
+  public setSelectedUserId(id: number): void {
+    this.selectedUserId.set(id);
+  }
 }
